@@ -12,13 +12,23 @@ body{
     background-color: #f3f3f3;
 }
 
+main{
+    display:grid;
+}
+
 header{
     margin: auto;
 }
 
 h1{
     color: var(--primary-color, darkblue);
+    font-family: "Roboto", sans-serif;
 }
+
+h1 ~ p {
+    color:darkred;
+}
+
 
 h2{
     color: rgb(8, 0, 117);
@@ -41,6 +51,10 @@ a[href$=".md"]{
     color: color(display-p3 0.2 0.5 0.9 / 0.9);
 }
 
+summary + p{
+    font-style: italic;
+}
+
 .attendList {
     background-color: lightgray;
     padding: 10px 20% 10px 20%;
@@ -59,12 +73,28 @@ a[href$=".md"]{
     padding-bottom: 10px;
     padding-right: 20%;
     padding-left: 20%;
+}
 
+#agenda li{
+    list-style-type: square;
+    margin:10%;
 }
 
 .summaryDiv{
     padding-top:30px;
     display:grid;
+}
+
+div:has(video){
+    padding:5%;
+}
+
+details > p {
+    font-size: 20px;
+}
+
+.imgVid {
+    background-color: #f3f3f3;
 }
 
 .q_c{
@@ -74,18 +104,8 @@ a[href$=".md"]{
 
 }
 
-img{
-    width:500px;
-    height:auto;
-    position: static;
 
-}
-
-video{
-    position: relative;
-}
-
-div{
+.agendaGrid{
     max-width: 100%;
     min-width: 10%;
 }
@@ -95,7 +115,13 @@ div, section :hover{
     transition-duration: 1s;
 }
 
-.agenda :hover {
+div.agenda {
+    border-left: 2px solid darkblue; 
+    border-right: 2px solid darkblue;
+}
+
+
+#agenda :hover {
     transform: translateY(-2px);
     transition-duration: 1s;
 }
@@ -110,6 +136,45 @@ ul {
     flex-direction: column;
     justify-content: space-between;
     row-gap: 10px;
+
+    & li{
+        font-size:20px;
+        font-style: bold;
+    }
+}
+
+.agendaGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:15px;
+    grid-template-rows: 100px;
+}
+
+img{
+    max-width:500px;
+    width: 100%;
+    height:auto;
+    position: static;
+
+}
+
+video{
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+}
+
+@media screen and (max-width: 768px) {
+
+    .attendList, #agenda, .q_c {
+        padding: 0% 5% 0% 5%;
+    }
+
+    .agendaGrid{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
 }
 
 /* still need grid and below */
